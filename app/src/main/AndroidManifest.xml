@@ -12,10 +12,13 @@
         android:theme="@style/Theme.DragonChronicles"
         tools:targetApi="31">
         <activity
+            android:name=".GameStart"
+            android:exported="false" />
+        <activity
             android:name=".ChapterSelection"
             android:exported="false"
             android:label="Chapter Selection"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
