@@ -11,19 +11,25 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     CardView newGame;
-
     CardView chapterSelect;
-
     CardView options;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createCardViews();
+        startNewGame();
+        chapterSelectMenu();
+    }
+
+    private void createCardViews() {
         newGame = findViewById(R.id.new_game_card);
         chapterSelect = findViewById(R.id.chapter_selection_card);
         options = findViewById(R.id.options_card);
+    }
 
+    private void startNewGame() {
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(newGameIntent);
             }
         });
+    }
 
+    private void chapterSelectMenu() {
         chapterSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
