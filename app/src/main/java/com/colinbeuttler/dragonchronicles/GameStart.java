@@ -9,18 +9,22 @@ import android.widget.TextView;
 public class GameStart extends AppCompatActivity {
 
     TextView dialogue;
-
     TextView nextDialogue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_start);
+        setDialogue();
+        continueDialogue();
+    }
 
+    private void setDialogue() {
         dialogue = findViewById(R.id.text_view_dialogue);
         nextDialogue = findViewById(R.id.text_view_next);
+    }
 
-
+    private void continueDialogue() {
         nextDialogue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
