@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Toast;
 
-public class ChapterSelection extends AppCompatActivity {
+public class ChapterSelection extends AppCompatActivity implements ChapterSelectListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +23,12 @@ public class ChapterSelection extends AppCompatActivity {
         };
 
         ChapterAdapter adapter;
-        adapter = new ChapterAdapter(chapters);
+        adapter = new ChapterAdapter(chapters, this);
         recyclerList.setAdapter(adapter);
     }
 
+    @Override
+    public void onItemClicked(int position) {
+        Toast.makeText(this, "make toast", Toast.LENGTH_SHORT).show();
+    }
 }
