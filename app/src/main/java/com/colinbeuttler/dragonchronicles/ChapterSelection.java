@@ -1,9 +1,12 @@
 package com.colinbeuttler.dragonchronicles;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 public class ChapterSelection extends AppCompatActivity implements ChapterSelectListener{
@@ -29,6 +32,7 @@ public class ChapterSelection extends AppCompatActivity implements ChapterSelect
 
     @Override
     public void onItemClicked(int position) {
+        Log.d(TAG, "onItemClicked: " + position);
         Toast.makeText(this, "make toast", Toast.LENGTH_SHORT).show();
     }
 }
