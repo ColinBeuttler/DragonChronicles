@@ -22,7 +22,8 @@ public class ChapterSelection extends AppCompatActivity implements ChapterSelect
                 new Chapter("Chapter 3"),
                 new Chapter("Chapter 4"),
                 new Chapter("Chapter 5"),
-                new Chapter("Chapter 6")
+                new Chapter("Chapter 6"),
+                new Chapter("Chapter 7")
         };
 
         ChapterAdapter adapter;

@@ -15,8 +15,8 @@
         android:text="Select Chapter"
         android:textSize="50sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools"
+        tools:listitem="@layout/chapter_options"
         android:id="@+id/recycler_view_chapters"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
