@@ -6,8 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import com.colinbeuttler.dragonchronicles.chapterselection.ChapterSelection;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent newGameIntent = new Intent(MainActivity.this, GameActivity.class);
+                Intent newGameIntent = new Intent(MainActivity.this, GameStart.class);
                 startActivity(newGameIntent);
             }
         });
