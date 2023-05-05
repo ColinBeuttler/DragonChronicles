@@ -14,23 +14,13 @@ public class GameStart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chapter_1_activity_background);
-        setDialogue();
-        continueDialogue();
+        setContentView(R.layout.chapter_activity_background);
+        loadDialog();
     }
 
-    private void setDialogue() {
-        dialogue = findViewById(R.id.text_view_dialogue);
-        nextDialogue = findViewById(R.id.text_view_next);
+    private void loadDialog() {
+        getSupportFragmentManager().beginTransaction().add(R.id.dialog_fragment, DialogFragment.class, null).commit();
     }
 
-    private void continueDialogue() {
-        nextDialogue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialogue.setText("Hello there!!");
-            }
-        });
-    }
 
 }
