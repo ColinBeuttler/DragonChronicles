@@ -12,7 +12,7 @@
         android:theme="@style/Theme.DragonChronicles"
         tools:targetApi="31">
         <activity
-            android:name=".GameStart"
+            android:name=".GameActivity"
             android:exported="false"
             android:label="Story Mode"
             android:parentActivityName=".MainActivity" />

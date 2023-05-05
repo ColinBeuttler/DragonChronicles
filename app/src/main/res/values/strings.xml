@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DragonChronicles</string>
+    <string name="hello_world">Hello World</string>
+    <string name="continue...">continue...</string>
 </resources>
