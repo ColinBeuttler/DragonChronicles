@@ -17,7 +17,7 @@
             android:label="Story Mode"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ChapterSelection"
+            android:name=".chapterselection.ChapterSelection"
             android:exported="false"
             android:label="Chapter Selection"
             android:parentActivityName=".MainActivity" />

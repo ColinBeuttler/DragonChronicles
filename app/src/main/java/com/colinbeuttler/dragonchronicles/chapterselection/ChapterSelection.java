@@ -1,4 +1,4 @@
-package com.colinbeuttler.dragonchronicles;
+package com.colinbeuttler.dragonchronicles.chapterselection;
 
 import static android.content.ContentValues.TAG;
 
@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.colinbeuttler.dragonchronicles.R;
 
 public class ChapterSelection extends AppCompatActivity implements ChapterSelectListener{
 

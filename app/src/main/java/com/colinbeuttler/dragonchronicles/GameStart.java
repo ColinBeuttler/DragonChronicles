@@ -14,7 +14,7 @@ public class GameStart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_start);
+        setContentView(R.layout.chapter_1_activity_background);
         setDialogue();
         continueDialogue();
     }

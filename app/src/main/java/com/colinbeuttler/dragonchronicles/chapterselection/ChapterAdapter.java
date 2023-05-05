@@ -1,4 +1,4 @@
-package com.colinbeuttler.dragonchronicles;
+package com.colinbeuttler.dragonchronicles.chapterselection;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.colinbeuttler.dragonchronicles.R;
 
 public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder> {
 

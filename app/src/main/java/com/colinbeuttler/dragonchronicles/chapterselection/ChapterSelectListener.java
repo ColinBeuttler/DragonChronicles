@@ -1,4 +1,4 @@
-package com.colinbeuttler.dragonchronicles;
+package com.colinbeuttler.dragonchronicles.chapterselection;
 
 import android.widget.Toast;
 
