@@ -1,6 +1,5 @@
 package com.colinbeuttler.dragonchronicles;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,7 @@ import androidx.annotation.Nullable;
 
 public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
-    TextView dialogCard;
-    TextView nextDialogue;
+    TextView dialogShadow;
 
 
 
@@ -26,12 +24,9 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dialogCard = (TextView) view.findViewById(R.id.text_view_dialogue);
-        nextDialogue = (TextView) view.findViewById(R.id.text_view_next);
-        nextDialogue.setOnClickListener(view1 -> dialogCard.setText("Hello There!!"));
+        dialogShadow = (TextView) view.findViewById(R.id.text_view_dialogue);
+        dialogShadow.setOnClickListener(view1 -> dialogShadow.setText("Hello There!!"));
 
-//        continueDialogue();
-//        dialogCard.setText("Hello there!!");
     }
 
 
