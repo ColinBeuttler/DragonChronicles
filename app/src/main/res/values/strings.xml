@@ -2,4 +2,5 @@
     <string name="app_name">DragonChronicles</string>
     <string name="hello_world">Hello World</string>
     <string name="continue...">continue...</string>
+    <string name="touch_to_start">Touch to Start</string>
 </resources>
