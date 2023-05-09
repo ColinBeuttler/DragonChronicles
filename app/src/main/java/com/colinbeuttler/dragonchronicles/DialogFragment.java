@@ -10,23 +10,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     TextView dialogShadow;
 
     int i = 0;
 
-    String[] dialogLines = {
-            "\n\tWelcome to Dragon Flight",
-            "\n\n\tChapter 1: An Egg and a Stranger.....\n\n",
-            "\n\t'Good Morning'",
-            "'Now where were we?'",
-            "\n\t'...Oh yes that's right!!!'",
-            "\n\t'You were about to pick a dragon egg...",
-            "\n\tDid you make a decision yet?'",
-
+    String[][] dialogLines = {
+            {"Welcome to Dragon Flight"},
+            {"Chapter 1: An Egg and a Stranger....."},
+            {"'Good Morning'"},
+            {"'Finally awake I see....'"},
+            {"'Now where were we?'"},
+            {"'...Oh yes that's right!!!'"},
+            {"'You were about to pick a dragon egg..."},
+            {"Did you make a decision yet?'"}
     };
-
 
 
     @Nullable
@@ -49,8 +51,11 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     }
 
-public String getLine(){
-    return dialogLines[i];
-}
+    public String getLine() {
+        if(dialogLines[i].length >2){
+            return dialogLines[i][0];
+        }
+        else return null;
+    }
 
 }
