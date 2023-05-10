@@ -75,9 +75,6 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             case 3:
                 addDialogOptions();
                 return dialogLines[i][0];
-            case 5:
-                addMultiAns();
-                return dialogLines[i][0];
             default:
                 return null;
         }
