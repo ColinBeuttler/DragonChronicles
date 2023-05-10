@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-
 public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     TextView dialogShadow;
@@ -69,28 +68,18 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     public String getLine() {
         int dialogLength = dialogLines[i].length;
-        switch (dialogLength) {
-            case 1:
-                return dialogLines[i][0];
-            case 3:
-                addDialogOptions();
-                return dialogLines[i][0];
-            default:
-                return null;
+        if (dialogLength > 1) {
+            addDialogOptions();
         }
+        return dialogLines[i][0];
     }
 
-    private void addMultiAns() {
-    }
 
     private void addDialogOptions() {
         options.clear();
-        for(int j = 1; j< dialogLines[i].length; j++){
-            options.add(dialogLines[i][j]);
-        }
+        options.addAll(Arrays.asList(dialogLines[i]).subList(1, dialogLines[i].length));
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.list_view_answer_option_layout, options);
         dialogOptionsView.setAdapter(arrayAdapter);
-        Toast.makeText(getContext(), options.toString(), Toast.LENGTH_SHORT).show();
     }
 
 }
