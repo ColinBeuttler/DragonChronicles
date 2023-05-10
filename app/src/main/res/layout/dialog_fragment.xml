@@ -2,20 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dialog_linear_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/dialog_gradient_overlay"
-    android:gravity="center"
     android:orientation="vertical">
 
-
     <TextView
+        android:gravity="center_horizontal"
         android:id="@+id/text_view_dialogue"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:text="@string/touch_to_start"
         android:textColor="@color/silver"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:layout_marginBottom="30dp"/>
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/dialog_options_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
 
 
 </LinearLayout>

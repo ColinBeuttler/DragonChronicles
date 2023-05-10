@@ -4,17 +4,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 
 public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     TextView dialogShadow;
     LinearLayout dialogLayout;
+
+    ListView dialogOptionsView;
+
+    ArrayList<String> options;
+
 
     int i = 0;
 
@@ -41,6 +53,8 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         dialogShadow = (TextView) view.findViewById(R.id.text_view_dialogue);
         dialogLayout = (LinearLayout) view.findViewById(R.id.dialog_linear_layout);
+        dialogOptionsView = (ListView) requireView().findViewById(R.id.dialog_options_list_view);
+        options = new ArrayList<String>();
         dialogShadow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,16 +87,13 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     }
 
     private void addDialogOptions() {
-
-        for (int j = 1; j < dialogLines[i].length; j++) {
-            TextView option = new TextView(this.getContext());
-            option.setText(dialogLines[i][j]);
-            option.setId(j);
-            option.setLayoutParams(new ViewGroup.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            dialogLayout.addView(option);
+        options.clear();
+        for(int j = 1; j< dialogLines[i].length; j++){
+            options.add(dialogLines[i][j]);
         }
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.list_view_answer_option_layout, options);
+        dialogOptionsView.setAdapter(arrayAdapter);
+        Toast.makeText(getContext(), options.toString(), Toast.LENGTH_SHORT).show();
     }
 
 }
