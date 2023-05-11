@@ -11,7 +11,7 @@
         android:id="@+id/text_view_dialogue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="60dp"
         android:text="@string/touch_to_start"
         android:textColor="@color/silver"
         android:textSize="22sp"

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -80,6 +81,13 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         options.addAll(Arrays.asList(dialogLines[i]).subList(1, dialogLines[i].length));
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.list_view_answer_option_layout, options);
         dialogOptionsView.setAdapter(arrayAdapter);
+        dialogOptionsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String value = arrayAdapter.getItem(position);
+                Toast.makeText(getContext(),value,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
