@@ -31,8 +31,6 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     int i = 0;
 
     String[][] dialogLines = {
-            {"Welcome to Dragon Flight"},
-            {"Chapter 1: An Egg and a Stranger....."},
             {"'Good Morning'"},
             {"'Finally awake I see....'"},
             {"'Now where were we?'"},
@@ -58,7 +56,7 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         dialogShadow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogShadow.setText(getLine());
+                setDialog();
                 if (dialogLines[i].length < 2) {
                     i++;
                 }
@@ -66,6 +64,11 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         });
 
     }
+
+    void setDialog() {
+        dialogShadow.setText(getLine());
+    }
+
 
     public String getLine() {
         int dialogLength = dialogLines[i].length;

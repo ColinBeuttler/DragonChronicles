@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/untitled"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@drawable/untitled">
+
+
+        <TextView
+            android:id="@+id/title_screen_background_view"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/chapter_1_an_egg_and_a_stranger"
+            android:textColor="@color/silver"
+            android:textSize="28sp">
+        </TextView>
+
+
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/character_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dialog_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/dialog_fragment"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="com.colinbeuttler.dragonchronicles.DialogFragment"
         android:id="@+id/dialog_fragment"
+        android:name="com.colinbeuttler.dragonchronicles.DialogFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout="@layout/dialog_fragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
