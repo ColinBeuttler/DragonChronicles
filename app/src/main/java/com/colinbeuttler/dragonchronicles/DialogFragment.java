@@ -27,6 +27,8 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     ArrayList<String> options;
 
+    TextView titleScreen;
+
 
     int i = 0;
 
@@ -49,24 +51,32 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        titleScreen = (TextView) view.findViewById(R.id.title_screen_background_view);
         dialogShadow = (TextView) view.findViewById(R.id.text_view_dialogue);
         dialogLayout = (LinearLayout) view.findViewById(R.id.dialog_linear_layout);
         dialogOptionsView = (ListView) requireView().findViewById(R.id.dialog_options_list_view);
         options = new ArrayList<String>();
+
+
         dialogShadow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setDialog();
+                dialogShadow.setText(getLine());
                 if (dialogLines[i].length < 2) {
                     i++;
                 }
             }
         });
 
-    }
+        titleScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (titleScreen.getVisibility() == View.VISIBLE) {
+                    titleScreen.setVisibility(View.GONE);
+                }
+            }
+        });
 
-    void setDialog() {
-        dialogShadow.setText(getLine());
     }
 
 
@@ -88,7 +98,7 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String value = arrayAdapter.getItem(position);
-                Toast.makeText(getContext(),value,Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), value, Toast.LENGTH_LONG).show();
             }
         });
     }

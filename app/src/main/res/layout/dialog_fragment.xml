@@ -2,9 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dialog_linear_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/dialog_gradient_overlay"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_screen_background_view"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/chapter_1_an_egg_and_a_stranger"
+        android:textColor="@color/silver"
+        android:textSize="28sp">
+    </TextView>
 
 
     <TextView
@@ -14,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:textColor="@color/silver"
+        android:text="@string/touch_to_start"
         android:textSize="22sp"
         android:layout_marginBottom="30dp"/>
 
