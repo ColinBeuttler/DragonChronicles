@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class LoginInFragment extends Fragment {
 
     TextInputEditText userName;
-    TextInputEditText userPasword;
+    TextInputEditText userPassword;
 
     @Nullable
     @Override
@@ -26,6 +26,6 @@ public class LoginInFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         userName.findViewById(R.id.user_name_text_input);
-        userPasword.findViewById(R.id.user_password_text_input);
+        userPassword.findViewById(R.id.user_password_text_input);
     }
 }
