@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.colinbeuttler.dragonchronicles.chapterselection.ChapterSelection;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView startLogin;
 
+    LinearLayout startMenu;
     FragmentContainerView loginFragment;
 
     @Override
@@ -37,13 +39,14 @@ public class MainActivity extends AppCompatActivity {
         chapterSelect = findViewById(R.id.chapter_selection_card);
         options = findViewById(R.id.options_card);
         startLogin = findViewById(R.id.start_login);
+        startMenu = findViewById(R.id.start_menu);
         loginFragment = findViewById(R.id.log_in_fragment);
 
         startLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startLogin.setVisibility(View.INVISIBLE);
-                loginFragment.setVisibility(View.VISIBLE);
+                startMenu.setVisibility(View.VISIBLE);
 
             }
         });
