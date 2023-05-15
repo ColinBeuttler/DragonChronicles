@@ -58,31 +58,23 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         options = new ArrayList<String>();
 
 
-        dialogShadow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogShadow.setText(getLine());
-                if (dialogLines[i].length < 2) {
-                    i++;
-                }
+        dialogShadow.setOnClickListener(v -> {
+            dialogShadow.setText(getLine());
+            if (dialogLines[i].length < 2) {
+                i++;
             }
         });
 
-        titleScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (titleScreen.getVisibility() == View.VISIBLE) {
-                    titleScreen.setVisibility(View.GONE);
-                }
+        titleScreen.setOnClickListener(v -> {
+            if (titleScreen.getVisibility() == View.VISIBLE) {
+                titleScreen.setVisibility(View.GONE);
             }
         });
 
     }
 
-
     public String getLine() {
-        int dialogLength = dialogLines[i].length;
-        if (dialogLength > 1) {
+        if (dialogLines[i].length > 1) {
             addDialogOptions();
         }
         return dialogLines[i][0];
