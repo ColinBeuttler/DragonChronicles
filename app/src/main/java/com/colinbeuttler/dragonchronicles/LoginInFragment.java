@@ -19,13 +19,13 @@ public class LoginInFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.log_in_fragment_layout, null);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        userName.findViewById(R.id.user_name_text_input);
-        userPassword.findViewById(R.id.user_password_text_input);
+//        userName.findViewById(R.id.user_name_text_input);
+//        userPassword.findViewById(R.id.user_password_text_input);
     }
 }

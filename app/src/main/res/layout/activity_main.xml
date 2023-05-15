@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/_94395"
@@ -18,11 +19,33 @@
         android:textColor="#191970"
         android:textSize="70sp" />
 
+    <TextView
+        android:id="@+id/start_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="140dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Touch to Login"
+        android:textColor="@color/design_default_color_primary"
+        android:textSize="24sp" />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/log_in_fragment"
+        android:name="com.colinbeuttler.dragonchronicles.LoginInFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:layout="@layout/log_in_fragment_layout" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/new_game_card"
@@ -35,10 +58,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Game"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:textColor="#fffafa"/>
+                android:text="New Game"
+                android:textColor="#fffafa" />
 
         </androidx.cardview.widget.CardView>
 
@@ -54,9 +77,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chapter Selection"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
+                android:text="Chapter Selection"
                 android:textColor="#fffafa" />
 
         </androidx.cardview.widget.CardView>
@@ -72,13 +95,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Options"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
+                android:text="Options"
                 android:textColor="#fffafa" />
 
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
+
 
 </RelativeLayout>
