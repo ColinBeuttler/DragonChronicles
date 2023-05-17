@@ -41,10 +41,6 @@ public class Dragon {
         this.gender = source.gender;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String getSpecies() {
         return species;
     }
@@ -121,7 +117,4 @@ public class Dragon {
         return "\n\tLooks like it's something called a " + this.species + "\n";
     }
 
-    public static Dragon creatNamedDragon(Dragon hatchling, String name) {
-        return new Dragon(name, hatchling.getSpecies(), hatchling.getType(), hatchling.getOrigin(), hatchling.getKeepers(), hatchling.getGender());
-    }
 }

@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.colinbeuttler.dragonchronicles.models.Dragon;
+import com.colinbeuttler.dragonchronicles.models.DragonList;
+
+import java.util.ArrayList;
+
 public class GameActivity extends AppCompatActivity {
 
 
