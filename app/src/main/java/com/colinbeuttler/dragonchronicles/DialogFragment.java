@@ -51,21 +51,21 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             {"Need more time..."},
             {"or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"},
             {"You stare deep into the egg..."},
-            {"***Egg Message***"},
+            {userDragon.eggMessage()},
             {"Choose this egg?", "Yes", "No"},
             {"You are handed the egg, you turn it over in your hands..."},
             {"What would you like to do with the Egg?", "Hold the egg close to the fire.", "Rub the egg.", "Do nothing with the egg"},
             {"I think it's hatching..."},
             {"Congratulations" + Dragon.determineGender()},
             {"Ohhh, that's rare..."},
-            {"a ***dragon species***"},
+            {"a " + userDragon.getType()},
             {"Have you heard of the dragon tribes?"},
             {"Anyways... every dragon species has a place of origin..."},
             {"the locals in these places of origin tame and ride the respective species.."},
             {"so they know it better than anyone else."},
             {"These locals are known as the dragon tribes."},
             {"If you want to learn how to ride your new friend, you will need to seek out one of these tribes."},
-            {"The tribes you will want to seek out, is the ***dragon origin*** tribe."},
+            {"The tribes you will want to seek out, is the " + userDragon.originMessage(userDragon) + " tribe."},
             {"Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."},
             {"there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."},
             {"This is when we part ways, are you ready to go?", "Yes", "Not yet"},
@@ -125,27 +125,31 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String value = arrayAdapter.getItem(position);
                 Toast.makeText(getContext(), value, Toast.LENGTH_LONG).show();
+                optionsAns(value);
             }
         });
     }
 
-    private int optionsAns(String ans) {
+    private void optionsAns(String ans) {
         switch (i) {
             case 5:
-                if (ans.equals("Yes")) {
-                    return i + 2;
-                } else if (ans.equals("No")) {
-                    return i++;
-
-                }
+                if (ans.equals("Yes"))  i =+ 2;
+                else  i++;
+                break;
 
             case 7:
                 if (ans.equals("Green Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
                 else if (ans.equals("Blue Egg")) userDragon = new Dragon(null, WYRM, null);
                 else if (ans.equals("Purple Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
-                return i++;
+                 i++;
+                 break;
+
+            case 10:
+                if (ans.equals("Yes"))  i++;
+                else  i =- 2;
+                break;
         }
-        return i;
+
     }
 
     private void saveGame() {
