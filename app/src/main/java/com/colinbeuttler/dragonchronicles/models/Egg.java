@@ -46,7 +46,7 @@ public class Egg {
         switch (res) {
             case "a": {
                 System.out.println(
-                        "\n\tYou move closer the campfire cluthing the egg in your arms... it seems to warm up as you get closer, there was definately some movement from inside.");
+                        "\n\tYou move closer the campfire clutching the egg in your arms... it seems to warm up as you get closer, there was definitely some movement from inside.");
                 increaseWarmth(8);
                 break;
             }

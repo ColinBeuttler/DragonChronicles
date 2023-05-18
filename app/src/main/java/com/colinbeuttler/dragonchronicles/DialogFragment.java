@@ -2,9 +2,6 @@ package com.colinbeuttler.dragonchronicles;
 
 import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.BEHEMOTH;
 import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.WYRM;
-
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,38 +39,71 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     int i = 0;
 
     String[][] dialogLines = {
+//            line 0
             {"Good Morning"},
+//            line 1
             {"Finally awake I see...."},
+//            line 2
             {"Now where were we?"},
+//            line 3
             {"...Oh yes that's right!!!"},
+//            line 4
             {"You were about to pick a dragon egg..."},
+//            line 5
             {"Did you make a decision yet?", "Yes", "No"},
+//            line 6
             {"Need more time..."},
+//            line 7
             {"or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"},
+//            line 8
             {"You stare deep into the egg..."},
+//            line 9
             {userDragon.eggMessage()},
+//            line 10
             {"Choose this egg?", "Yes", "No"},
+//            line 11
             {"You are handed the egg, you turn it over in your hands..."},
-            {"What would you like to do with the Egg?", "Hold the egg close to the fire.", "Rub the egg.", "Do nothing with the egg"},
+//            line 12
+            {"What would you like to do with the Egg?", "Hold the egg close to the fire.", "Rub the egg.", "Do nothing with the egg."},
+//            line 13
             {"I think it's hatching..."},
+//            line 14
             {"Congratulations" + Dragon.determineGender()},
+//            line 15
             {"Ohhh, that's rare..."},
+//            line 16
             {"a " + userDragon.getType()},
-            {"Have you heard of the dragon tribes?"},
+//            line 17
+            {"Have you heard of the dragon tribes?", "Yes", "No"},
+//            line 18
             {"Anyways... every dragon species has a place of origin..."},
+//            line 19
             {"the locals in these places of origin tame and ride the respective species.."},
+//            line 20
             {"so they know it better than anyone else."},
+//            line 21
             {"These locals are known as the dragon tribes."},
+//            line 22
             {"If you want to learn how to ride your new friend, you will need to seek out one of these tribes."},
+//            line 23
             {"The tribes you will want to seek out, is the " + userDragon.originMessage(userDragon) + " tribe."},
+//            line 24
             {"Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."},
+//            line 25
             {"there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."},
+//            line 26
             {"This is when we part ways, are you ready to go?", "Yes", "Not yet"},
+//            line 27
             {"...well you can't stay here with me, I have business to attend."},
+//            line 28
             {"Ready to be on your way?", "Yes", "No"},
+//            line 29
             {"A small carriage drops from above you, several adolescent wyverns are tethered to the top."},
+//            line 30
             {"The door swings open, revealing a black barren interior with a single seat, it has no windows"},
+//            line 31
             {"With your new Hatchling in toe, you get inside..."},
+//            line 32
             {"Continue to next Chapter?"}
     };
 
@@ -87,10 +117,10 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        titleScreen = (TextView) view.findViewById(R.id.title_screen_background_view);
-        dialogShadow = (TextView) view.findViewById(R.id.text_view_dialogue);
-        dialogLayout = (LinearLayout) view.findViewById(R.id.dialog_linear_layout);
-        dialogOptionsView = (ListView) requireView().findViewById(R.id.dialog_options_list_view);
+        titleScreen = view.findViewById(R.id.title_screen_background_view);
+        dialogShadow = view.findViewById(R.id.text_view_dialogue);
+        dialogLayout = view.findViewById(R.id.dialog_linear_layout);
+        dialogOptionsView = requireView().findViewById(R.id.dialog_options_list_view);
 
         dialogShadow.setOnClickListener(v -> {
             dialogShadow.setText(getLine());
@@ -133,31 +163,44 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     private void optionsAns(String ans) {
         switch (i) {
             case 5:
-                if (ans.equals("Yes"))  i =+ 2;
-                else  i++;
+                if (ans.equals("Yes")) i += 2;
+                else i++;
                 break;
 
             case 7:
                 if (ans.equals("Green Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
                 else if (ans.equals("Blue Egg")) userDragon = new Dragon(null, WYRM, null);
                 else if (ans.equals("Purple Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
-                 i++;
-                 break;
+                i++;
+                break;
 
             case 10:
-                if (ans.equals("Yes"))  i++;
-                else  i =- 2;
+                if (ans.equals("Yes")) i++;
+                else i -= 2;
                 break;
+
+            case 12:
+                if (ans.equals("Hold the egg close to the fire.")) ;
+                else if (ans.equals("Rub the egg.")) ;
+                else if (ans.equals("Do nothing with the egg.")) ;
+                i++;
+                break;
+
+            case 17:
+                i++;
+                break;
+
+
         }
 
     }
 
-    private void saveGame() {
-        Dragon userDragon = null;
-        Context context = getActivity();
-        assert context != null;
-        SharedPreferences sharedPref = context.getSharedPreferences(String.valueOf(userDragon), Context.MODE_PRIVATE);
-
-    }
+//    private void saveGame() {
+//        Dragon userDragon = null;
+//        Context context = getActivity();
+//        assert context != null;
+//        SharedPreferences sharedPref = context.getSharedPreferences(String.valueOf(userDragon), Context.MODE_PRIVATE);
+//
+//    }
 
 }
