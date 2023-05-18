@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import java.util.Objects;
 
 public class Dragon {
+
     public enum Gender {
         MALE, FEMALE
     }
@@ -15,70 +16,33 @@ public class Dragon {
 
     public String name;
     private Type type;
-    private String species;
     private Gender gender;
-    private String origin;
-    private String keepers;
 
-    public Dragon(String name, String species, Type type, String origin, String keepers, Gender gender) {
-        if (species == null) {
-            throw new IllegalArgumentException("species cannot be null or blank");
-        }
+
+    public Dragon(String name, Type type, Gender gender) {
+
         this.name = name;
-        this.species = species;
         this.type = type;
-        this.origin = origin;
-        this.keepers = keepers;
         this.gender = gender;
     }
 
     public Dragon(Dragon source) {
         this.name = source.name;
-        this.species = source.species;
         this.type = source.type;
-        this.origin = source.origin;
-        this.keepers = source.keepers;
         this.gender = source.gender;
     }
 
-    public String getSpecies() {
-        return species;
-    }
 
     public Type getType() {
         return type;
-    }
-
-    public String getOrigin() {
-        return origin;
-    }
-
-    public String getKeepers() {
-        return keepers;
     }
 
     public Gender getGender() {
         return gender;
     }
 
-
-    public void setSpecies(String species) {
-        if (species == null) {
-            throw new IllegalArgumentException("species cannot be null or blank");
-        }
-        this.species = species;
-    }
-
     public void setType(Type type) {
         this.type = type;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
-    public void setKeepers(String keepers) {
-        this.keepers = keepers;
     }
 
     public void setGender(Gender gender) {
@@ -95,6 +59,32 @@ public class Dragon {
         }
     }
 
+    public String eggMessage() {
+        String message = null;
+        if (this.type.equals(Type.FAE)) {
+            message = "...within the egg, you sense both calm and ferocity. A brilliant interior with veiled edges constantly moving like a swirling typhoon.";
+        } else if (this.type.equals(Type.BEHEMOTH)) {
+            message = "...within the egg's great deeps you sense a cold fathomless light, akin to the endless depths of the tunnels dug by the Deep Mountain Dwellers.";
+        } else if (this.type.equals(Type.WYRM)) {
+            message = "...within the egg, you see a radiant glow dancing within, both fast and graceful.";
+        }
+        return message;
+    }
+
+    ;
+
+    public String genderMessage() {
+        String message = null;
+        if (this.gender.equals(Gender.MALE)) {
+            message = "It's a boy";
+        } else if (this.gender.equals(Gender.FEMALE)) {
+            message = "It's a girl";
+        }
+        return message;
+    }
+
+    ;
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this)
@@ -103,18 +93,18 @@ public class Dragon {
             return false;
         }
         Dragon dragon = (Dragon) obj;
-        return Objects.equals(species, dragon.species) && Objects.equals(type, dragon.type)
-                && Objects.equals(gender, dragon.gender) && Objects.equals(origin, dragon.origin) && Objects.equals(keepers, dragon.keepers);
+        return Objects.equals(type, dragon.type)
+                && Objects.equals(gender, dragon.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(species, type, gender, origin, keepers);
+        return Objects.hash(name, type, gender);
     }
 
     @NonNull
     public String toString() {
-        return "\n\tLooks like it's something called a " + this.species + "\n";
+        return "\n\tLooks like it's something called a " + getType() + "\n";
     }
 
 }

@@ -13,9 +13,9 @@ public class DragonList {
 
 
     public void addDragons(){
-        dragons.add(new Dragon(null, "Nami", FAE, "Windy Islands", "Anglers", null));
-        dragons.add(new Dragon(null, "Xeno", WYRM, "Sky Fortress", "Cyber Children", null));
-        dragons.add(new Dragon(null, "Goggy", BEHEMOTH, "Deep Water Mountains", "Deep Dwellers", null));
+        dragons.add(new Dragon(null, FAE,null));
+        dragons.add(new Dragon(null, WYRM, null));
+        dragons.add(new Dragon(null, BEHEMOTH, null));
     }
 
 

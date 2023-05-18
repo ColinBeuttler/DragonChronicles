@@ -1,5 +1,7 @@
 package com.colinbeuttler.dragonchronicles;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.annotation.Nullable;
 
 import com.colinbeuttler.dragonchronicles.models.Dragon;
 import com.colinbeuttler.dragonchronicles.models.DragonList;
+import com.colinbeuttler.dragonchronicles.models.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,14 +49,14 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             {"Did you make a decision yet?", "Yes", "No"},
             {"Need more time..."},
             {"or Should I pick for you?"},
-            {"How's this egg?", "Green Egg", "Blue Egg", "Purple Egg"},
+            {"Pick an egg", "Green Egg", "Blue Egg", "Purple Egg"},
             {"You stare deep into the egg..."},
             {"***Egg Message***"},
             {"Choose this egg?", "Yes", "No"},
             {"You are handed the egg, you turn it over in your hands..."},
             {"What would you like to do with the Egg?", "Hold the egg close to the fire.", "Rub the egg.", "Do nothing with the egg"},
             {"I think it's hatching..."},
-            {"It's a ***hatchling gender***"},
+            {"Congratulations" + Dragon.determineGender()},
             {"Ohhh, that's rare..."},
             {"a ***dragon species***"},
             {"Have you heard of the dragon tribes?"},
@@ -126,6 +129,14 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
                 Toast.makeText(getContext(), value, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void saveGame(){
+        Dragon userDragon = null;
+        Context context = getActivity();
+        assert context != null;
+        SharedPreferences sharedPref = context.getSharedPreferences(String.valueOf(userDragon), Context.MODE_PRIVATE);
+
     }
 
 }
