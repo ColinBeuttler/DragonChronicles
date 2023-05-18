@@ -61,11 +61,11 @@ public class Dragon {
 
     public String eggMessage() {
         String message = null;
-        if (this.type.equals(Type.FAE)) {
+        if (this.getType() == Type.FAE) {
             message = "...within the egg, you sense both calm and ferocity. A brilliant interior with veiled edges constantly moving like a swirling typhoon.";
-        } else if (this.type.equals(Type.BEHEMOTH)) {
+        } else if (this.getType() == Type.BEHEMOTH) {
             message = "...within the egg's great deeps you sense a cold fathomless light, akin to the endless depths of the tunnels dug by the Deep Mountain Dwellers.";
-        } else if (this.type.equals(Type.WYRM)) {
+        } else if (this.getType() == Type.WYRM) {
             message = "...within the egg, you see a radiant glow dancing within, both fast and graceful.";
         }
         return message;
@@ -85,11 +85,11 @@ public class Dragon {
 
     public String keepersMessage(Dragon dragon) {
         String message = null;
-        if (dragon.getType().equals(Type.FAE)) {
+        if (dragon.getType() == Type.FAE) {
             message = "Anglers";
-        } else if (dragon.getType().equals(Type.BEHEMOTH)) {
+        } else if (dragon.getType() == Type.BEHEMOTH) {
             message = "Deep Water Dwellers";
-        } else if (dragon.getType().equals(Type.WYRM)) {
+        } else if (dragon.getType() == Type.WYRM) {
             message = "Cyber Children";
         }
         return message;
@@ -97,11 +97,11 @@ public class Dragon {
 
     public String originMessage(Dragon dragon) {
         String message = null;
-        if (dragon.getType().equals(Type.FAE)) {
+        if (dragon.getType() == Type.FAE) {
             message = "Windy Islands";
-        } else if (dragon.getType().equals(Type.BEHEMOTH)) {
+        } else if (dragon.getType() == Type.BEHEMOTH) {
             message = "Deep Water Caves";
-        } else if (dragon.getType().equals(Type.WYRM)) {
+        } else if (dragon.getType() == Type.WYRM) {
             message = "Sky Fortress";
         }
         return message;

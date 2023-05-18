@@ -1,7 +1,9 @@
 package com.colinbeuttler.dragonchronicles;
 
 import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.BEHEMOTH;
+import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.FAE;
 import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.WYRM;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +35,7 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     TextView titleScreen;
 
-    Dragon userDragon;
+    Dragon userDragon = new Dragon(null, null, null);
 
 
     int i = 0;
@@ -154,13 +156,14 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String value = arrayAdapter.getItem(position);
-                Toast.makeText(getContext(), value, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), value, Toast.LENGTH_LONG).show();
                 optionsAns(value);
             }
         });
     }
 
     private void optionsAns(String ans) {
+        Toast.makeText(getContext(), ans, Toast.LENGTH_LONG).show();
         switch (i) {
             case 5:
                 if (ans.equals("Yes")) i += 2;
@@ -168,9 +171,9 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
                 break;
 
             case 7:
-                if (ans.equals("Green Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
-                else if (ans.equals("Blue Egg")) userDragon = new Dragon(null, WYRM, null);
-                else if (ans.equals("Purple Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
+                if (ans.equals("Green Egg")) userDragon.setType(BEHEMOTH);
+                else if (ans.equals("Blue Egg")) userDragon.setType(FAE);
+                else if (ans.equals("Purple Egg")) userDragon.setType(WYRM);
                 i++;
                 break;
 
@@ -187,6 +190,10 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
                 break;
 
             case 17:
+                i++;
+                break;
+
+            default:
                 i++;
                 break;
 
