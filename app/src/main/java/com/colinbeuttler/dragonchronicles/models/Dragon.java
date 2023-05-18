@@ -83,7 +83,29 @@ public class Dragon {
         return message;
     }
 
-    ;
+    public String keepersMessage(Dragon dragon) {
+        String message = null;
+        if (dragon.getType().equals(Type.FAE)) {
+            message = "Anglers";
+        } else if (dragon.getType().equals(Type.BEHEMOTH)) {
+            message = "Deep Water Dwellers";
+        } else if (dragon.getType().equals(Type.WYRM)) {
+            message = "Cyber Children";
+        }
+        return message;
+    }
+
+    public String originMessage(Dragon dragon) {
+        String message = null;
+        if (dragon.getType().equals(Type.FAE)) {
+            message = "Windy Islands";
+        } else if (dragon.getType().equals(Type.BEHEMOTH)) {
+            message = "Deep Water Caves";
+        } else if (dragon.getType().equals(Type.WYRM)) {
+            message = "Sky Fortress";
+        }
+        return message;
+    }
 
     @Override
     public boolean equals(Object obj) {
