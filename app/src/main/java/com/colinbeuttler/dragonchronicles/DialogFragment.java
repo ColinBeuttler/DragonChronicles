@@ -1,5 +1,8 @@
 package com.colinbeuttler.dragonchronicles;
 
+import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.BEHEMOTH;
+import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.WYRM;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,8 +20,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.colinbeuttler.dragonchronicles.models.Dragon;
-import com.colinbeuttler.dragonchronicles.models.DragonList;
-import com.colinbeuttler.dragonchronicles.models.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +36,7 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
 
     TextView titleScreen;
 
-    DragonList dragons;
+    Dragon userDragon;
 
 
     int i = 0;
@@ -48,8 +49,7 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             {"You were about to pick a dragon egg..."},
             {"Did you make a decision yet?", "Yes", "No"},
             {"Need more time..."},
-            {"or Should I pick for you?"},
-            {"Pick an egg", "Green Egg", "Blue Egg", "Purple Egg"},
+            {"or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"},
             {"You stare deep into the egg..."},
             {"***Egg Message***"},
             {"Choose this egg?", "Yes", "No"},
@@ -91,8 +91,6 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         dialogShadow = (TextView) view.findViewById(R.id.text_view_dialogue);
         dialogLayout = (LinearLayout) view.findViewById(R.id.dialog_linear_layout);
         dialogOptionsView = (ListView) requireView().findViewById(R.id.dialog_options_list_view);
-        dragons = new DragonList();
-
 
         dialogShadow.setOnClickListener(v -> {
             dialogShadow.setText(getLine());
@@ -131,7 +129,26 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         });
     }
 
-    private void saveGame(){
+    private int optionsAns(String ans) {
+        switch (i) {
+            case 5:
+                if (ans.equals("Yes")) {
+                    return i + 2;
+                } else if (ans.equals("No")) {
+                    return i++;
+
+                }
+
+            case 7:
+                if (ans.equals("Green Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
+                else if (ans.equals("Blue Egg")) userDragon = new Dragon(null, WYRM, null);
+                else if (ans.equals("Purple Egg")) userDragon = new Dragon(null, BEHEMOTH, null);
+                return i++;
+        }
+        return i;
+    }
+
+    private void saveGame() {
         Dragon userDragon = null;
         Context context = getActivity();
         assert context != null;
