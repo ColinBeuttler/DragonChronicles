@@ -165,24 +165,24 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     private void optionsAns(String ans) {
         Toast.makeText(getContext(), ans, Toast.LENGTH_LONG).show();
         switch (i) {
-            case 6:
+            case 5:
                 if (ans.equals("Yes")) i += 2;
                 else i++;
                 break;
 
-            case 7:
+            case 8:
                 if (ans.equals("Green Egg")) userDragon.setType(BEHEMOTH);
                 else if (ans.equals("Blue Egg")) userDragon.setType(FAE);
                 else if (ans.equals("Purple Egg")) userDragon.setType(WYRM);
                 i++;
                 break;
 
-            case 11:
+            case 10:
                 if (ans.equals("Yes")) i++;
                 else i -= 2;
                 break;
 
-            case 13:
+            case 12:
                 if (ans.equals("Hold the egg close to the fire.")) ;
                 else if (ans.equals("Rub the egg.")) ;
                 else if (ans.equals("Do nothing with the egg.")) ;
