@@ -41,71 +41,71 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     int i = 0;
 
     String[][] dialogLines = {
-//            line 0
-            {"Good Morning"},
 //            line 1
-            {"Finally awake I see...."},
+            {"Good Morning"},
 //            line 2
-            {"Now where were we?"},
+            {"Finally awake I see...."},
 //            line 3
-            {"...Oh yes that's right!!!"},
+            {"Now where were we?"},
 //            line 4
-            {"You were about to pick a dragon egg..."},
+            {"...Oh yes that's right!!!"},
 //            line 5
-            {"Did you make a decision yet?", "Yes", "No"},
+            {"You were about to pick a dragon egg..."},
 //            line 6
-            {"Need more time..."},
+            {"Did you make a decision yet?", "Yes", "No"},
 //            line 7
-            {"or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"},
+            {"Need more time..."},
 //            line 8
-            {"You stare deep into the egg..."},
+            {"or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"},
 //            line 9
-            {userDragon.eggMessage()},
+            {"You stare deep into the egg..."},
 //            line 10
-            {"Choose this egg?", "Yes", "No"},
+            {userDragon.eggMessage()},
 //            line 11
-            {"You are handed the egg, you turn it over in your hands..."},
+            {"Choose this egg?", "Yes", "No"},
 //            line 12
-            {"What would you like to do with the Egg?", "Hold the egg close to the fire.", "Rub the egg.", "Do nothing with the egg."},
+            {"You are handed the egg, you turn it over in your hands..."},
 //            line 13
-            {"I think it's hatching..."},
+            {"What would you like to do with the Egg?", "Hold the egg close to the fire.", "Rub the egg.", "Do nothing with the egg."},
 //            line 14
-            {"Congratulations" + Dragon.determineGender()},
+            {"I think it's hatching..."},
 //            line 15
-            {"Ohhh, that's rare..."},
+            {"Congratulations" + Dragon.determineGender()},
 //            line 16
-            {"a " + userDragon.getType()},
+            {"Ohhh, that's rare..."},
 //            line 17
-            {"Have you heard of the dragon tribes?", "Yes", "No"},
+            {"a " + userDragon.getType()},
 //            line 18
-            {"Anyways... every dragon species has a place of origin..."},
+            {"Have you heard of the dragon tribes?", "Yes", "No"},
 //            line 19
-            {"the locals in these places of origin tame and ride the respective species.."},
+            {"Anyways... every dragon species has a place of origin..."},
 //            line 20
-            {"so they know it better than anyone else."},
+            {"the locals in these places of origin tame and ride the respective species.."},
 //            line 21
-            {"These locals are known as the dragon tribes."},
+            {"so they know it better than anyone else."},
 //            line 22
-            {"If you want to learn how to ride your new friend, you will need to seek out one of these tribes."},
+            {"These locals are known as the dragon tribes."},
 //            line 23
-            {"The tribes you will want to seek out, is the " + userDragon.originMessage(userDragon) + " tribe."},
+            {"If you want to learn how to ride your new friend, you will need to seek out one of these tribes."},
 //            line 24
-            {"Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."},
+            {"The tribes you will want to seek out, is the " + userDragon.originMessage(userDragon) + " tribe."},
 //            line 25
-            {"there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."},
+            {"Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."},
 //            line 26
-            {"This is when we part ways, are you ready to go?", "Yes", "Not yet"},
+            {"there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."},
 //            line 27
-            {"...well you can't stay here with me, I have business to attend."},
+            {"This is when we part ways, are you ready to go?", "Yes", "Not yet"},
 //            line 28
-            {"Ready to be on your way?", "Yes", "No"},
+            {"...well you can't stay here with me, I have business to attend."},
 //            line 29
-            {"A small carriage drops from above you, several adolescent wyverns are tethered to the top."},
+            {"Ready to be on your way?", "Yes", "No"},
 //            line 30
-            {"The door swings open, revealing a black barren interior with a single seat, it has no windows"},
+            {"A small carriage drops from above you, several adolescent wyverns are tethered to the top."},
 //            line 31
-            {"With your new Hatchling in toe, you get inside..."},
+            {"The door swings open, revealing a black barren interior with a single seat, it has no windows"},
 //            line 32
+            {"With your new Hatchling in toe, you get inside..."},
+//            line 33
             {"Continue to next Chapter?"}
     };
 
@@ -165,7 +165,7 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     private void optionsAns(String ans) {
         Toast.makeText(getContext(), ans, Toast.LENGTH_LONG).show();
         switch (i) {
-            case 5:
+            case 6:
                 if (ans.equals("Yes")) i += 2;
                 else i++;
                 break;
@@ -177,19 +177,15 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
                 i++;
                 break;
 
-            case 10:
+            case 11:
                 if (ans.equals("Yes")) i++;
                 else i -= 2;
                 break;
 
-            case 12:
+            case 13:
                 if (ans.equals("Hold the egg close to the fire.")) ;
                 else if (ans.equals("Rub the egg.")) ;
                 else if (ans.equals("Do nothing with the egg.")) ;
-                i++;
-                break;
-
-            case 17:
                 i++;
                 break;
 
