@@ -131,9 +131,10 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             }
         });
 
-        dialogLayout.setOnClickListener(v -> {
-            titleScreen.setVisibility(View.GONE);
-
+        titleScreen.setOnClickListener(v -> {
+            if (titleScreen.getVisibility() == View.VISIBLE) {
+                titleScreen.setVisibility(View.GONE);
+            }
         });
 
     }
