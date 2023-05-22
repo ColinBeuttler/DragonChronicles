@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.colinbeuttler.dragonchronicles.models.Dragon;
 
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class DialogFragment extends androidx.fragment.app.DialogFragment {
+public class DialogFragment extends Fragment {
 
     TextView dialogShadow;
     LinearLayout dialogLayout;
@@ -131,9 +132,11 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
             }
         });
 
-        titleScreen.setOnClickListener(v -> {
-            if (titleScreen.getVisibility() == View.VISIBLE) {
+        titleScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 titleScreen.setVisibility(View.GONE);
+
             }
         });
 
