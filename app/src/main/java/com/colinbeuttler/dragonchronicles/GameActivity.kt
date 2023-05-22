@@ -1,26 +1,22 @@
-package com.colinbeuttler.dragonchronicles;
+package com.colinbeuttler.dragonchronicles
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.colinbeuttler.dragonchronicles.databinding.GameActivityBackgroundBinding
 
-import android.os.Bundle;
+class GameActivity : AppCompatActivity() {
 
-public class GameActivity extends AppCompatActivity {
+    private lateinit var binding: GameActivityBackgroundBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
 
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_activity_background);
-        loadDialog();
-
+        super.onCreate(savedInstanceState)
+        binding = GameActivityBackgroundBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        loadDialog()
     }
 
-
-
-    private void loadDialog() {
-        getSupportFragmentManager().beginTransaction().add(R.id.dialog_fragment, DialogFragment.class, null).commit();
+    private fun loadDialog() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.dialog_fragment, DialogFragment::class.java, null).commit()
     }
-
-
 }

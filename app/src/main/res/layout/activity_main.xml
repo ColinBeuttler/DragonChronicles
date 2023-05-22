@@ -30,13 +30,6 @@
         android:textSize="24sp" />
 
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/log_in_fragment"
-        android:name="com.colinbeuttler.dragonchronicles.LoginInFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:layout="@layout/log_in_fragment_layout" />
 
     <LinearLayout
         android:id="@+id/start_menu"
