@@ -126,9 +126,11 @@ public class DialogFragment extends Fragment {
         dialogOptionsView = requireView().findViewById(R.id.dialog_options_list_view);
 
         dialogShadow.setOnClickListener(v -> {
-            dialogShadow.setText(getLine());
             if (dialogLines[i].length < 2) {
+                dialogShadow.setText(dialogLines[i][0]);
                 i++;
+            } else if (dialogLines[i].length > 1) {
+                addDialogOptions();
             }
         });
 
@@ -142,12 +144,13 @@ public class DialogFragment extends Fragment {
 
     }
 
-    public String getLine() {
-        if (dialogLines[i].length > 1) {
-            addDialogOptions();
-        }
-        return dialogLines[i][0];
-    }
+//    public String getLine() {
+//        if (dialogLines[i].length > 1) {
+//            addDialogOptions();
+//        }
+//        Toast.makeText(getContext(), "option" + dialogLines[i][0], Toast.LENGTH_SHORT).show();
+//        return dialogLines[i][0];
+//    }
 
 
     private void addDialogOptions() {
@@ -166,7 +169,7 @@ public class DialogFragment extends Fragment {
     }
 
     private void optionsAns(String ans) {
-        Toast.makeText(getContext(), ans, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(), ans, Toast.LENGTH_LONG).show();
         switch (i) {
             case 5:
                 if (ans.equals("Yes")) i += 2;
