@@ -21,6 +21,7 @@ class DialogFragment : Fragment() {
 
     var userDragon = Dragon(null, null, null)
     var i = 0
+
     private var dialogLines = arrayOf(
         arrayOf("Good Morning"),
         arrayOf("Finally awake I see...."),
