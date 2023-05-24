@@ -1,215 +1,137 @@
-package com.colinbeuttler.dragonchronicles;
+package com.colinbeuttler.dragonchronicles
 
-import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.BEHEMOTH;
-import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.FAE;
-import static com.colinbeuttler.dragonchronicles.models.Dragon.Type.WYRM;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
+import com.colinbeuttler.dragonchronicles.databinding.DialogFragmentBinding
+import com.colinbeuttler.dragonchronicles.models.Dragon
+import com.colinbeuttler.dragonchronicles.models.Dragon.Companion.determineGender
+import java.util.*
+import kotlin.collections.ArrayList
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+class DialogFragment : Fragment() {
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+    private lateinit var binding: DialogFragmentBinding
 
-import com.colinbeuttler.dragonchronicles.models.Dragon;
+    private lateinit var options: ArrayList<String>
 
-import java.util.ArrayList;
-import java.util.Arrays;
+    var userDragon = Dragon(null, null, null)
+    var i = 0
+    private var dialogLines = arrayOf(
+        arrayOf("Good Morning"),
+        arrayOf("Finally awake I see...."),
+        arrayOf("Now where were we?"),
+        arrayOf("...Oh yes that's right!!!"),
+        arrayOf("You were about to pick a dragon egg..."),
+        arrayOf("Did you make a decision yet?", "Yes", "No"),
+        arrayOf("Need more time..."),
+        arrayOf("or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"),
+        arrayOf("You stare deep into the egg..."),
+        arrayOf(userDragon.eggMessage()),
+        arrayOf("Choose this egg?", "Yes", "No"),
+        arrayOf("You are handed the egg, you turn it over in your hands..."),
+        arrayOf(
+            "What would you like to do with the Egg?",
+            "Hold the egg close to the fire.",
+            "Rub the egg.",
+            "Do nothing with the egg."
+        ),
+        arrayOf("I think it's hatching..."),
+        arrayOf("Congratulations" + determineGender()),
+        arrayOf("Ohhh, that's rare..."),
+        arrayOf("a " + userDragon.type),
+        arrayOf("Have you heard of the dragon tribes?", "Yes", "No"),
+        arrayOf("Anyways... every dragon species has a place of origin..."),
+        arrayOf("the locals in these places of origin tame and ride the respective species.."),
+        arrayOf("so they know it better than anyone else."),
+        arrayOf("These locals are known as the dragon tribes."),
+        arrayOf("If you want to learn how to ride your new friend, you will need to seek out one of these tribes."),
+        arrayOf(
+            "The tribes you will want to seek out, is the " + userDragon.originMessage(userDragon) + " tribe."
+        ),
+        arrayOf("Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."),
+        arrayOf("there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."),
+        arrayOf("This is when we part ways, are you ready to go?", "Yes", "Not yet"),
+        arrayOf("...well you can't stay here with me, I have business to attend."),
+        arrayOf("Ready to be on your way?", "Yes", "No"),
+        arrayOf("A small carriage drops from above you, several adolescent wyverns are tethered to the top."),
+        arrayOf("The door swings open, revealing a black barren interior with a single seat, it has no windows"),
+        arrayOf("With your new Hatchling in toe, you get inside..."),
+        arrayOf("Continue to next Chapter?")
+    )
 
-
-public class DialogFragment extends Fragment {
-
-    TextView dialogShadow;
-    LinearLayout dialogLayout;
-
-    ListView dialogOptionsView;
-
-    ArrayList<String> options;
-
-    TextView titleScreen;
-
-    Dragon userDragon = new Dragon(null, null, null);
-
-
-    int i = 0;
-
-    String[][] dialogLines = {
-//            line 1
-            {"Good Morning"},
-//            line 2
-            {"Finally awake I see...."},
-//            line 3
-            {"Now where were we?"},
-//            line 4
-            {"...Oh yes that's right!!!"},
-//            line 5
-            {"You were about to pick a dragon egg..."},
-//            line 6
-            {"Did you make a decision yet?", "Yes", "No"},
-//            line 7
-            {"Need more time..."},
-//            line 8
-            {"or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"},
-//            line 9
-            {"You stare deep into the egg..."},
-//            line 10
-            {userDragon.eggMessage()},
-//            line 11
-            {"Choose this egg?", "Yes", "No"},
-//            line 12
-            {"You are handed the egg, you turn it over in your hands..."},
-//            line 13
-            {"What would you like to do with the Egg?", "Hold the egg close to the fire.", "Rub the egg.", "Do nothing with the egg."},
-//            line 14
-            {"I think it's hatching..."},
-//            line 15
-            {"Congratulations" + Dragon.determineGender()},
-//            line 16
-            {"Ohhh, that's rare..."},
-//            line 17
-            {"a " + userDragon.getType()},
-//            line 18
-            {"Have you heard of the dragon tribes?", "Yes", "No"},
-//            line 19
-            {"Anyways... every dragon species has a place of origin..."},
-//            line 20
-            {"the locals in these places of origin tame and ride the respective species.."},
-//            line 21
-            {"so they know it better than anyone else."},
-//            line 22
-            {"These locals are known as the dragon tribes."},
-//            line 23
-            {"If you want to learn how to ride your new friend, you will need to seek out one of these tribes."},
-//            line 24
-            {"The tribes you will want to seek out, is the " + userDragon.originMessage(userDragon) + " tribe."},
-//            line 25
-            {"Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."},
-//            line 26
-            {"there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."},
-//            line 27
-            {"This is when we part ways, are you ready to go?", "Yes", "Not yet"},
-//            line 28
-            {"...well you can't stay here with me, I have business to attend."},
-//            line 29
-            {"Ready to be on your way?", "Yes", "No"},
-//            line 30
-            {"A small carriage drops from above you, several adolescent wyverns are tethered to the top."},
-//            line 31
-            {"The door swings open, revealing a black barren interior with a single seat, it has no windows"},
-//            line 32
-            {"With your new Hatchling in toe, you get inside..."},
-//            line 33
-            {"Continue to next Chapter?"}
-    };
-
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.dialog_fragment, null);
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = DialogFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        titleScreen = view.findViewById(R.id.title_screen_background_view);
-        dialogShadow = view.findViewById(R.id.text_view_dialogue);
-        dialogLayout = view.findViewById(R.id.dialog_linear_layout);
-        dialogOptionsView = requireView().findViewById(R.id.dialog_options_list_view);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        dialogShadow.setOnClickListener(v -> {
-            if (dialogLines[i].length < 2) {
-                dialogShadow.setText(dialogLines[i][0]);
-                i++;
-            } else if (dialogLines[i].length > 1) {
-                addDialogOptions();
+        binding.textViewDialogue.setOnClickListener(View.OnClickListener { v: View? ->
+            if (dialogLines[i].size < 2) {
+                binding.textViewDialogue.text = dialogLines[i][0]
+                i++
+            } else if (dialogLines[i].size > 1) {
+                addDialogOptions()
             }
-        });
-
-        titleScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                titleScreen.setVisibility(View.GONE);
-
-            }
-        });
-
+        })
+        binding.titleScreenBackgroundView.setOnClickListener(View.OnClickListener { binding.titleScreenBackgroundView.setVisibility(View.GONE) })
     }
 
-//    public String getLine() {
-//        if (dialogLines[i].length > 1) {
-//            addDialogOptions();
-//        }
-//        Toast.makeText(getContext(), "option" + dialogLines[i][0], Toast.LENGTH_SHORT).show();
-//        return dialogLines[i][0];
-//    }
-
-
-    private void addDialogOptions() {
-        options = new ArrayList<>();
-        options.addAll(Arrays.asList(dialogLines[i]).subList(1, dialogLines[i].length));
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), R.layout.list_view_answer_option_layout, options);
-        dialogOptionsView.setAdapter(arrayAdapter);
-        dialogOptionsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String value = arrayAdapter.getItem(position);
-//                Toast.makeText(getContext(), value, Toast.LENGTH_LONG).show();
-                optionsAns(value);
+    //    public String getLine() {
+    //        if (dialogLines[i].length > 1) {
+    //            addDialogOptions();
+    //        }
+    //        Toast.makeText(getContext(), "option" + dialogLines[i][0], Toast.LENGTH_SHORT).show();
+    //        return dialogLines[i][0];
+    //    }
+    private fun addDialogOptions() {
+        options = ArrayList()
+        options.addAll(Arrays.asList(*dialogLines[i]).subList(1, dialogLines[i].size))
+        val arrayAdapter =
+            ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options!!)
+        binding.dialogOptionsListView.adapter = arrayAdapter
+        binding.dialogOptionsListView.onItemClickListener =
+            OnItemClickListener { parent, view, position, id ->
+                val value = arrayAdapter.getItem(position)
+                //                Toast.makeText(getContext(), value, Toast.LENGTH_LONG).show();
+                optionsAns(value)
             }
-        });
     }
 
-    private void optionsAns(String ans) {
+    private fun optionsAns(ans: String?) {
 //        Toast.makeText(getContext(), ans, Toast.LENGTH_LONG).show();
-        switch (i) {
-            case 5:
-                if (ans.equals("Yes")) i += 2;
-                else i++;
-                break;
-
-            case 8:
-                if (ans.equals("Green Egg")) userDragon.setType(BEHEMOTH);
-                else if (ans.equals("Blue Egg")) userDragon.setType(FAE);
-                else if (ans.equals("Purple Egg")) userDragon.setType(WYRM);
-                i++;
-                break;
-
-            case 10:
-                if (ans.equals("Yes")) i++;
-                else i -= 2;
-                break;
-
-            case 12:
-                if (ans.equals("Hold the egg close to the fire.")) ;
-                else if (ans.equals("Rub the egg.")) ;
-                else if (ans.equals("Do nothing with the egg.")) ;
-                i++;
-                break;
-
-            default:
-                i++;
-                break;
-
-
+        when (i) {
+            5 -> if (ans == "Yes") i += 2 else i++
+            8 -> {
+                when (ans) {
+                    "Green Egg" -> userDragon.type = Dragon.Type.BEHEMOTH
+                    "Blue Egg" -> userDragon.type = Dragon.Type.FAE
+                    "Purple Egg" -> userDragon.type = Dragon.Type.WYRM
+                }
+                i++
+            }
+            10 -> if (ans == "Yes") i++ else i -= 2
+//            12 -> {
+//                if (ans == "Hold the egg close to the fire.") ; else if (ans == "Rub the egg.") ; else if (ans == "Do nothing with the egg.");
+//                i++
+//            }
+            else -> i++
         }
-
-    }
-
-//    private void saveGame() {
-//        Dragon userDragon = null;
-//        Context context = getActivity();
-//        assert context != null;
-//        SharedPreferences sharedPref = context.getSharedPreferences(String.valueOf(userDragon), Context.MODE_PRIVATE);
-//
-//    }
-
+    } //    private void saveGame() {
+    //        Dragon userDragon = null;
+    //        Context context = getActivity();
+    //        assert context != null;
+    //        SharedPreferences sharedPref = context.getSharedPreferences(String.valueOf(userDragon), Context.MODE_PRIVATE);
+    //
+    //    }
 }

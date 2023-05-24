@@ -2,7 +2,7 @@ package com.colinbeuttler.dragonchronicles.models
 
 import kotlin.math.roundToInt
 
-class Dragon(var name: String, var type: Type, var gender: Gender) {
+class Dragon(var name: String?, var type: Type?, var gender: Gender?) {
     enum class Gender {
         MALE, FEMALE
     }
@@ -12,7 +12,7 @@ class Dragon(var name: String, var type: Type, var gender: Gender) {
     }
 
 
-    fun eggMessage(): String? {
+    fun eggMessage(): String {
         var message: String? = null
         message = when (type) {
             Type.FAE -> {
@@ -24,6 +24,7 @@ class Dragon(var name: String, var type: Type, var gender: Gender) {
             Type.WYRM -> {
                 "...within the egg, you see a radiant glow dancing within, both fast and graceful."
             }
+            else -> {" "}
         }
         return message
     }
@@ -38,7 +39,7 @@ class Dragon(var name: String, var type: Type, var gender: Gender) {
         return message
     }
 
-    fun keepersMessage(dragon: Dragon): String? {
+    fun keepersMessage(dragon: Dragon): String {
         var message: String? = null
         message = when (dragon.type) {
             Type.FAE -> {
@@ -50,11 +51,12 @@ class Dragon(var name: String, var type: Type, var gender: Gender) {
             Type.WYRM -> {
                 "Cyber Children"
             }
+            else -> {" "}
         }
         return message
     }
 
-    fun originMessage(dragon: Dragon): String? {
+    fun originMessage(dragon: Dragon): String {
         var message: String? = null
         message = when (dragon.type) {
             Type.FAE -> {
@@ -66,6 +68,7 @@ class Dragon(var name: String, var type: Type, var gender: Gender) {
             Type.WYRM -> {
                 "Sky Fortress"
             }
+            else -> {" "}
         }
         return message
     }
