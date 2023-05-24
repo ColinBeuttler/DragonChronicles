@@ -14,8 +14,12 @@ class GameActivity : AppCompatActivity() {
         binding = GameActivityBackgroundBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        loadDialog()
-        binding.titleScreenBackgroundView.setOnClickListener(View.OnClickListener { binding.titleScreenBackgroundView.visibility =
-            View.GONE })
+        binding.titleScreenBackgroundView.setOnClickListener { start() }
+    }
+
+    private fun start(){
+        binding.textViewDialogue.visibility = View.VISIBLE
+        binding.titleScreenBackgroundView.visibility = View.GONE
     }
 
 //    private fun loadDialog() {

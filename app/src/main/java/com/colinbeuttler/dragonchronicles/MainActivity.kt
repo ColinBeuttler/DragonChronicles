@@ -3,11 +3,7 @@ package com.colinbeuttler.dragonchronicles
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.FragmentContainerView
 import com.colinbeuttler.dragonchronicles.chapterselection.ChapterSelection
 import com.colinbeuttler.dragonchronicles.databinding.ActivityMainBinding
 
