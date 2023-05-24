@@ -6,17 +6,6 @@
     android:background="@drawable/dialog_gradient_overlay"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title_screen_background_view"
-        android:background="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/chapter_1_an_egg_and_a_stranger"
-        android:textColor="@color/silver"
-        android:textSize="28sp">
-    </TextView>
-
 
     <TextView
         android:gravity="center_horizontal"

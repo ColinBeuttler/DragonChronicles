@@ -84,7 +84,6 @@ class DialogFragment : Fragment() {
                 addDialogOptions()
             }
         })
-        binding.titleScreenBackgroundView.setOnClickListener(View.OnClickListener { binding.titleScreenBackgroundView.setVisibility(View.GONE) })
     }
 
     //    public String getLine() {
@@ -96,9 +95,9 @@ class DialogFragment : Fragment() {
     //    }
     private fun addDialogOptions() {
         options = ArrayList()
-        options.addAll(Arrays.asList(*dialogLines[i]).subList(1, dialogLines[i].size))
+        options.addAll(listOf(*dialogLines[i]).subList(1, dialogLines[i].size))
         val arrayAdapter =
-            ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options!!)
+            ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options)
         binding.dialogOptionsListView.adapter = arrayAdapter
         binding.dialogOptionsListView.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->

@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/untitled">
 
+    <TextView
+        android:id="@+id/title_screen_background_view"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/chapter_1_an_egg_and_a_stranger"
+        android:textColor="@color/white"
+        android:textSize="28sp">
+    </TextView>
+
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/character_img"
