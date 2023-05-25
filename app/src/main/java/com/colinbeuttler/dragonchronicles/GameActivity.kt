@@ -1,8 +1,12 @@
 package com.colinbeuttler.dragonchronicles
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.colinbeuttler.dragonchronicles.databinding.GameActivityBackgroundBinding
 import com.colinbeuttler.dragonchronicles.models.Dragon
 
@@ -79,8 +83,13 @@ class GameActivity : AppCompatActivity() {
     }
 
 
-//    private fun loadDialog() {
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.dialog_fragment, DialogFragment::class.java, null).commit()
-//    }
+    private fun loadDialog() {
+        supportFragmentManager.commit { add(R.id.dialog_fragment, DialogFragment()) }
+
+    }
+
+    fun getDialog(): Array<String> {
+        return dialogLines[i]
+    }
 }
+
