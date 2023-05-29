@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/untitled"
+    tools:ignore="ExtraText">
+
+    <TextView
+        android:id="@+id/title_screen_background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:gravity="center"
+        android:text="@string/chapter_1_an_egg_and_a_stranger"
+        android:textColor="@color/white"
+        android:textSize="28sp"></TextView>
+
+
+<!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/character_img"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/dialog_fragment"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <TextView
+        android:visibility="gone"
+        android:gravity="center"
+        android:background="@drawable/dialog_gradient_overlay"
+        android:text="@string/welcome_to_dragon_flight"
+        android:id="@+id/text_view_dialogue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/silver"
+        android:textSize="26sp"
+        android:paddingTop="120dp"
+        android:paddingBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:visibility="gone"
+        android:id="@+id/dialog_fragment"
+        android:name="com.colinbeuttler.dragonchronicles.DialogFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout="@layout/dialog_fragment" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
