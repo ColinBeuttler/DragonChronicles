@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createCardViews() {
-        binding.startLogin.setOnClickListener(View.OnClickListener {
+        binding.startLogin.setOnClickListener {
             binding.startLogin.visibility = View.INVISIBLE
             binding.startMenu.visibility = View.VISIBLE
-        })
+        }
     }
 
     private fun startNewGame() {

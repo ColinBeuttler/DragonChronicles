@@ -1,21 +1,16 @@
 package com.colinbeuttler.dragonchronicles
 
-import android.content.ContentValues.TAG
-import android.os.Bundle
-import android.util.Log
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.colinbeuttler.dragonchronicles.databinding.GameActivityBackgroundBinding
 import com.colinbeuttler.dragonchronicles.models.Dragon
 
-class GameActivity : AppCompatActivity() {
+object GameData {
 
-    private lateinit var binding: GameActivityBackgroundBinding
-
-    private var i = 0
+    var options: Array<String> = addOptions() as Array<String>
 
     var userDragon = Dragon(null, null, null)
+
+    var optionAns: String? = null
+
+    var i = 0
 
     var dialogLines = arrayOf(
         arrayOf("Good Morning"),
@@ -47,9 +42,7 @@ class GameActivity : AppCompatActivity() {
         arrayOf("These locals are known as the dragon tribes."),
         arrayOf("If you want to learn how to ride your new friend, you will need to seek out one of these tribes."),
         arrayOf(
-            "The tribes you will want to seek out, is the " + userDragon.originMessage(
-                userDragon
-            ) + " tribe."
+            "The tribes you will want to seek out, is the " + userDragon.originMessage(userDragon) + " tribe."
         ),
         arrayOf("Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."),
         arrayOf("there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."),
@@ -62,32 +55,20 @@ class GameActivity : AppCompatActivity() {
         arrayOf("Continue to next Chapter?")
     )
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        super.onCreate(savedInstanceState)
-        binding = GameActivityBackgroundBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-//        loadDialog()
-        binding.titleScreenBackgroundView.setOnClickListener { start() }
-        binding.textViewDialogue.setOnClickListener { nextDialog() }
+    private fun addOptions(): List<String> {
+        if(dialogLines[i].size > 1){
+            return (dialogLines[i].drop(0))
+        }
+      return emptyList()
     }
 
-
-    private fun start() {
-        binding.textViewDialogue.visibility = View.VISIBLE
-        binding.titleScreenBackgroundView.visibility = View.GONE
+    public fun addInt(int: Int){
+        i += int
     }
 
-    private fun nextDialog() {
-        binding.textViewDialogue.text = dialogLines[i][0]
-        i++
+    public fun getDialog(int: Int): Array<String> {
+        return dialogLines[int]
     }
 
-
-//    private fun loadDialog() {
-//        supportFragmentManager.commit { add(R.id.dialog_fragment, DialogFragment()) }
-//
-//    }
 
 }
