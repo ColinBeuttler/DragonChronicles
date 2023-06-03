@@ -17,7 +17,7 @@ class GameActivity : AppCompatActivity() {
 
     var userDragon = Dragon(null, null, null)
 
-    var dialogLines = arrayOf(
+    private var dialogLines = arrayOf(
         arrayOf("Good Morning"),
         arrayOf("Finally awake I see...."),
         arrayOf("Now where were we?"),
@@ -89,5 +89,9 @@ class GameActivity : AppCompatActivity() {
 //        supportFragmentManager.commit { add(R.id.dialog_fragment, DialogFragment()) }
 //
 //    }
+
+    fun getDialog(): Array<String> {
+        return dialogLines[i]
+    }
 
 }

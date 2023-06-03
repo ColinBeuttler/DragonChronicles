@@ -1,25 +1,30 @@
 package com.colinbeuttler.dragonchronicles
 
 
+import android.app.Activity
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.colinbeuttler.dragonchronicles.GameData.dialogLines
-import com.colinbeuttler.dragonchronicles.GameData.i
-import com.colinbeuttler.dragonchronicles.GameData.optionAns
-import com.colinbeuttler.dragonchronicles.GameData.options
-import com.colinbeuttler.dragonchronicles.GameData.userDragon
 import com.colinbeuttler.dragonchronicles.databinding.DialogFragmentBinding
 
 
 class DialogFragment : Fragment() {
 
     private lateinit var binding: DialogFragmentBinding
+
+
+
+//    private var dialogLine = (activity as GameActivity).getDialog()
+//
+//    private lateinit var options : Array<String>
+//
+//    private lateinit var optionAns : String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,18 +42,18 @@ class DialogFragment : Fragment() {
 
 //        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options)
 //        binding.dialogOptionsListView.adapter = arrayAdapter
-
-
+//
+//
 //        val builder = AlertDialog.Builder(requireActivity())
-//        builder.setTitle(dialogLines[i][0])
+//        builder.setTitle(dialogLine[0])
 //        builder.setItems(options) { _, which -> optionAns = options[which] }
 //        val dialogOpt = builder.create()
-//        if(dialogLines[i].size < 2){
+//        if(dialogLine.size < 2){
 //            dialogOpt.show()
 //        }
-
-
-//        Log.v(TAG, dialogLines[i][0])
+//
+//
+//        Log.v(TAG, dialogLine[0])
 
     }
 
