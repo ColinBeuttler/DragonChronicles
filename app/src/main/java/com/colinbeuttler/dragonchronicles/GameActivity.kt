@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.colinbeuttler.dragonchronicles.databinding.GameActivityBackgroundBinding
 import com.colinbeuttler.dragonchronicles.models.Dragon
 
@@ -64,11 +65,11 @@ class GameActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+
         binding = GameActivityBackgroundBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        loadDialog()
+        supportFragmentManager.commit { replace(R.id.dialog_fragment, DialogFragment()) }
         binding.titleScreenBackgroundView.setOnClickListener { start() }
         binding.textViewDialogue.setOnClickListener { nextDialog() }
     }
@@ -84,11 +85,6 @@ class GameActivity : AppCompatActivity() {
         i++
     }
 
-
-//    private fun loadDialog() {
-//        supportFragmentManager.commit { add(R.id.dialog_fragment, DialogFragment()) }
-//
-//    }
 
     fun getDialog(): Array<String> {
         return dialogLines[i]
