@@ -35,23 +35,24 @@ class DialogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var dialogLine = (activity as GameActivity?)!!.getDialog()
+        val dialogLine = (activity as GameActivity?)!!.getDialog()
+        val options: Array<String> = dialogLine.copyOfRange(1,dialogLine.size);
 
 
-//        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options)
-//        binding.dialogOptionsListView.adapter = arrayAdapter
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options)
+        binding.dialogOptionsListView.adapter = arrayAdapter
 
 
-//        val builder = AlertDialog.Builder(requireActivity())
-//        builder.setTitle(dialogLine[0])
-////        builder.setItems(options) { _, which -> optionAns = options[which] }
-//        val dialogOpt = builder.create()
-//        if(dialogLine.size < 2){
-//            dialogOpt.show()
-//        }
-//
-//
-//        Log.v(TAG, dialogLine[0])
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle(dialogLine[0])
+//        builder.setItems(options) { _, which -> optionAns = options[which] }
+        val dialogOpt = builder.create()
+        if(dialogLine.size < 2){
+            dialogOpt.show()
+        }
+
+
+        Log.v(TAG, dialogLine[0])
 //
     }
 
