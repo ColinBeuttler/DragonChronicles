@@ -69,7 +69,7 @@ class GameActivity : AppCompatActivity() {
 
         binding = GameActivityBackgroundBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportFragmentManager.commit { replace(R.id.dialog_fragment, DialogFragment()) }
+        supportFragmentManager.commit { add(R.id.dialog_fragment, DialogFragment()) }
         binding.titleScreenBackgroundView.setOnClickListener { start() }
         binding.textViewDialogue.setOnClickListener { nextDialog() }
     }
@@ -81,6 +81,9 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun nextDialog() {
+//        if(dialogLines[i].size > 2){
+//
+//        }
         binding.textViewDialogue.text = dialogLines[i][0]
         i++
     }

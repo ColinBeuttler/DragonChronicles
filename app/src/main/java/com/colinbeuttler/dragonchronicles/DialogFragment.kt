@@ -19,10 +19,7 @@ class DialogFragment : Fragment() {
     private lateinit var binding: DialogFragmentBinding
 
 
-//
-//    private lateinit var options : Array<String>
-//
-//    private lateinit var optionAns : String
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,25 +32,23 @@ class DialogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+    }
+
+    public fun buildBubble(){
         val dialogLine = (activity as GameActivity?)!!.getDialog()
         val options: Array<String> = dialogLine.copyOfRange(1,dialogLine.size);
-
+        var optionAns : String
 
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options)
         binding.dialogOptionsListView.adapter = arrayAdapter
-
-
         val builder = AlertDialog.Builder(requireActivity())
         builder.setTitle(dialogLine[0])
 //        builder.setItems(options) { _, which -> optionAns = options[which] }
         val dialogOpt = builder.create()
-        if(dialogLine.size < 2){
+        if(dialogLine.size > 2){
             dialogOpt.show()
         }
-
-
-        Log.v(TAG, dialogLine[0])
-//
     }
 
 
