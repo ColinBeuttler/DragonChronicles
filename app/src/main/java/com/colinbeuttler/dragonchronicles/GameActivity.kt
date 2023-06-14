@@ -97,9 +97,10 @@ class GameActivity : AppCompatActivity() {
 
     private fun loadDialogBubble() {
         val builder = AlertDialog.Builder(this)
+        val ques = dialogLines[i][0].toString()
         val options: Array<String> = dialogLines[i].copyOfRange(1, dialogLines[i].size);
         var optionAns: String
-        builder.setTitle(dialogLines[0].toString())
+        builder.setTitle(ques)
         builder.setItems(options) { _, which -> optionAns = options[which] }
         builder.create().show()
 
