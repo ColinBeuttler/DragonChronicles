@@ -1,24 +1,19 @@
 package com.colinbeuttler.dragonchronicles
 
 
-import android.app.Activity
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.colinbeuttler.dragonchronicles.databinding.DialogFragmentBinding
 
 
-class DialogFragment : Fragment() {
+open class DialogFragment : Fragment() {
 
     private lateinit var binding: DialogFragmentBinding
-
-
 
 
     override fun onCreateView(
@@ -35,21 +30,17 @@ class DialogFragment : Fragment() {
 
     }
 
-    public fun buildBubble(){
-        val dialogLine = (activity as GameActivity?)!!.getDialog()
-        val options: Array<String> = dialogLine.copyOfRange(1,dialogLine.size);
-        var optionAns : String
 
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.list_view_answer_option_layout, options)
-        binding.dialogOptionsListView.adapter = arrayAdapter
-        val builder = AlertDialog.Builder(requireActivity())
-        builder.setTitle(dialogLine[0])
+//    public fun buildBubble(dialog: Array<String>) {
+//        val options: Array<String> = dialog.copyOfRange(1, dialog.size);
+//        var optionAns: String
+//        val builder = AlertDialog.Builder()
+//        builder.setTitle(dialog[0])
 //        builder.setItems(options) { _, which -> optionAns = options[which] }
-        val dialogOpt = builder.create()
-        if(dialogLine.size > 2){
-            dialogOpt.show()
-        }
-    }
+//        builder.create().show()
+//        Log.v(TAG, options[0])
+//
+//    }
 
 
 //    private fun optionsAns(ans: String?) {
@@ -78,6 +69,7 @@ class DialogFragment : Fragment() {
     //        SharedPreferences sharedPref = context.getSharedPreferences(String.valueOf(userDragon), Context.MODE_PRIVATE);
     //
     //    }
+
 }
 
 

@@ -7,4 +7,6 @@
     <string name="chapter_1_an_egg_and_a_stranger">Chapter 1: An Egg and a Stranger.....</string>
     <string name="password">password</string>
     <string name="user_name">User Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

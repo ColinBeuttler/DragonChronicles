@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
+
 import com.colinbeuttler.dragonchronicles.databinding.GameActivityBackgroundBinding
 import com.colinbeuttler.dragonchronicles.models.Dragon
+
 
 class GameActivity : AppCompatActivity() {
 
@@ -69,7 +69,6 @@ class GameActivity : AppCompatActivity() {
 
         binding = GameActivityBackgroundBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportFragmentManager.commit { add(R.id.dialog_fragment, DialogFragment()) }
         binding.titleScreenBackgroundView.setOnClickListener { start() }
         binding.textViewDialogue.setOnClickListener { nextDialog() }
     }
@@ -81,9 +80,10 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun nextDialog() {
-//        if(dialogLines[i].size > 2){
-//
-//        }
+        if (dialogLines[i].size > 2) {
+//            loadDialogBubble()
+
+        }
         binding.textViewDialogue.text = dialogLines[i][0]
         i++
     }
@@ -92,5 +92,15 @@ class GameActivity : AppCompatActivity() {
     fun getDialog(): Array<String> {
         return dialogLines[i]
     }
+
+//    private fun loadDialogBubble() {
+//        Log.v(TAG, dialogLines[i].toString())
+//        val fragment = DialogFragment()
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.replace(R.id.dialog_fragment, DialogFragment()).commit()
+//        fragment.buildBubble(dialogLines[i])
+//
+//    }
+
 
 }

@@ -19,37 +19,37 @@
         android:textSize="28sp"></TextView>
 
 
-<!--    <com.google.android.material.imageview.ShapeableImageView-->
-<!--        android:id="@+id/character_img"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/dialog_fragment"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    <com.google.android.material.imageview.ShapeableImageView-->
+    <!--        android:id="@+id/character_img"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/dialog_fragment"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
-        android:visibility="gone"
-        android:gravity="center"
-        android:background="@drawable/dialog_gradient_overlay"
-        android:text="@string/welcome_to_dragon_flight"
         android:id="@+id/text_view_dialogue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/silver"
-        android:textSize="26sp"
+        android:background="@drawable/dialog_gradient_overlay"
+        android:gravity="center"
         android:paddingTop="120dp"
         android:paddingBottom="80dp"
+        android:text="@string/welcome_to_dragon_flight"
+        android:textColor="@color/silver"
+        android:textSize="26sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:visibility="gone"
         android:id="@+id/dialog_fragment"
         android:name="com.colinbeuttler.dragonchronicles.DialogFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
