@@ -83,11 +83,12 @@ class GameActivity : AppCompatActivity() {
 
     private fun nextDialog() {
         if (dialogLines[i].size > 2) {
-       loadDialogBubble()
+            loadDialogBubble()
 
+        } else {
+            binding.textViewDialogue.text = dialogLines[i][0]
+            i++
         }
-        binding.textViewDialogue.text = dialogLines[i][0]
-        i++
     }
 
 
