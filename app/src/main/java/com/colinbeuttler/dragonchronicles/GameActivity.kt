@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 import com.colinbeuttler.dragonchronicles.databinding.GameActivityBackgroundBinding
@@ -71,6 +72,7 @@ class GameActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.titleScreenBackgroundView.setOnClickListener { start() }
         binding.textViewDialogue.setOnClickListener { nextDialog() }
+
     }
 
 
@@ -81,7 +83,7 @@ class GameActivity : AppCompatActivity() {
 
     private fun nextDialog() {
         if (dialogLines[i].size > 2) {
-//            loadDialogBubble()
+       loadDialogBubble()
 
         }
         binding.textViewDialogue.text = dialogLines[i][0]
@@ -93,14 +95,15 @@ class GameActivity : AppCompatActivity() {
         return dialogLines[i]
     }
 
-//    private fun loadDialogBubble() {
-//        Log.v(TAG, dialogLines[i].toString())
-//        val fragment = DialogFragment()
-//        val transaction = supportFragmentManager.beginTransaction()
-//        transaction.replace(R.id.dialog_fragment, DialogFragment()).commit()
-//        fragment.buildBubble(dialogLines[i])
-//
-//    }
+    private fun loadDialogBubble() {
+        val builder = AlertDialog.Builder(this)
+        val options: Array<String> = dialogLines[i].copyOfRange(1, dialogLines[i].size);
+        var optionAns: String
+        builder.setTitle(dialogLines[0].toString())
+        builder.setItems(options) { _, which -> optionAns = options[which] }
+        builder.create().show()
+
+    }
 
 
 }
