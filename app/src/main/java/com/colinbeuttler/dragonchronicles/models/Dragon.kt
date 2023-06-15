@@ -30,13 +30,13 @@ class Dragon(var name: String?, var type: Type?, var gender: Gender?) {
     }
 
     fun genderMessage(): String? {
-        var message: String? = null
+        if(gender == null) determineGender()
         if (gender == Gender.MALE) {
-            message = "It's a boy"
+             return "It's a boy"
         } else if (gender == Gender.FEMALE) {
-            message = "It's a girl"
+            return "It's a girl"
         }
-        return message
+        return null
     }
 
     fun keepersMessage(dragon: Dragon): String {
@@ -77,7 +77,7 @@ class Dragon(var name: String?, var type: Type?, var gender: Gender?) {
     companion object {
         @JvmStatic
         fun determineGender(): Gender {
-            val gender = Math.random().roundToInt().toInt()
+            val gender = Math.random().roundToInt()
             return if (gender < 1) {
                 Gender.FEMALE
             } else {

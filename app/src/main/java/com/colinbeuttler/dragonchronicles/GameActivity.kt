@@ -6,9 +6,15 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet.Transform
 
 import com.colinbeuttler.dragonchronicles.databinding.GameActivityBackgroundBinding
 import com.colinbeuttler.dragonchronicles.models.Dragon
+
+
+private fun String.replace(string: Regex) {
+
+}
 
 
 class GameActivity : AppCompatActivity() {
@@ -17,7 +23,7 @@ class GameActivity : AppCompatActivity() {
 
     private var i = 0
 
-    var userDragon = Dragon(null, null, null)
+    private var userDragon = Dragon(null, null, null)
 
     private var dialogLines = arrayOf(
         arrayOf("Good Morning"),
@@ -29,7 +35,7 @@ class GameActivity : AppCompatActivity() {
         arrayOf("Need more time..."),
         arrayOf("or Should I pick for you?", "Green Egg", "Blue Egg", "Purple Egg"),
         arrayOf("You stare deep into the egg..."),
-        arrayOf(userDragon.eggMessage()),
+        arrayOf("key:egg msg"),
         arrayOf("Choose this egg?", "Yes", "No"),
         arrayOf("You are handed the egg, you turn it over in your hands..."),
         arrayOf(
@@ -39,9 +45,9 @@ class GameActivity : AppCompatActivity() {
             "Do nothing with the egg."
         ),
         arrayOf("I think it's hatching..."),
-        arrayOf("Congratulations" + Dragon.determineGender()),
+        arrayOf("Congratulations key:gender msg"),
         arrayOf("Ohhh, that's rare..."),
-        arrayOf("a " + userDragon.type),
+        arrayOf("a key:type msg"),
         arrayOf("Have you heard of the dragon tribes?", "Yes", "No"),
         arrayOf("Anyways... every dragon species has a place of origin..."),
         arrayOf("the locals in these places of origin tame and ride the respective species.."),
@@ -49,9 +55,7 @@ class GameActivity : AppCompatActivity() {
         arrayOf("These locals are known as the dragon tribes."),
         arrayOf("If you want to learn how to ride your new friend, you will need to seek out one of these tribes."),
         arrayOf(
-            "The tribes you will want to seek out, is the " + userDragon.originMessage(
-                userDragon
-            ) + " tribe."
+            "The tribes you will want to seek out, is the key: origin msg tribe."
         ),
         arrayOf("Quite a wild bunch if I remember, although I'd say that about all the dragon tribes..."),
         arrayOf("there's a reason I just sell their eggs, I'm not crazy enough to actually get on one's back..."),
@@ -86,6 +90,7 @@ class GameActivity : AppCompatActivity() {
             loadDialogBubble()
 
         } else {
+            if(dialogLines[i][0].contains("key:", ignoreCase = true)) replaceString(dialogLines[i][0])
             binding.textViewDialogue.text = dialogLines[i][0]
             i++
         }
@@ -118,7 +123,7 @@ class GameActivity : AppCompatActivity() {
                 }
                 i++
             }
-            10 -> if (ans == "Yes") i++ else i -= 2
+            10 -> if (ans == "Yes") i++ else i -= 3
 //            12 -> {
 //                if (ans == "Hold the egg close to the fire.") ; else if (ans == "Rub the egg.") ; else if (ans == "Do nothing with the egg.");
 //                i++
@@ -129,4 +134,26 @@ class GameActivity : AppCompatActivity() {
     }
 
 
+    private fun replaceString(str: String): String {
+        if(str.contains("key:egg msg", ignoreCase = true)){
+            Log.v(TAG, "key:egg msg")
+            str.replace("key:egg msg", userDragon.eggMessage())
+        }
+        else if(str.contains("key:type msg", ignoreCase = true)){
+            Log.v(TAG, "key:type msg")
+            str.replace("key:type msg", userDragon.type.toString())
+        }
+        else if(str.contains("key:gender msg", ignoreCase = true)){
+            Log.v(TAG, "key:gender msg")
+            userDragon.genderMessage()?.let { str.replace("key:gender msg", it) }
+        }
+        else if(str.contains("key: origin msg", ignoreCase = true)){
+            Log.v(TAG, "key: origin msg")
+            str.replace("key: origin msg", userDragon.originMessage(userDragon))
+        }
+
+        return ""
+    }
+
 }
+
