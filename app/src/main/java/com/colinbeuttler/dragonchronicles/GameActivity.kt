@@ -124,7 +124,7 @@ class GameActivity : AppCompatActivity() {
                 i++
                 Log.v(TAG, userDragon.type.toString())
             }
-            9 -> if (ans == "Yes") i++ else i -= 3
+            10 -> if (ans == "Yes") i++ else i -= 3
 //            12 -> {
 //                if (ans == "Hold the egg close to the fire.") ; else if (ans == "Rub the egg.") ; else if (ans == "Do nothing with the egg.");
 //                i++
@@ -138,8 +138,7 @@ class GameActivity : AppCompatActivity() {
     private fun replaceString(str: String): String {
         var nStr = ""
         if(str.contains("key:egg msg", ignoreCase = true)){
-            val newValue = userDragon.eggMessage(userDragon)
-            nStr = str.replace("key:egg msg", newValue)
+            nStr = str.replace("key:egg msg", userDragon.eggMessage(userDragon))
             Log.v(TAG, str)
         }
         else if(str.contains("key:type msg", ignoreCase = true)){
