@@ -115,15 +115,16 @@ class GameActivity : AppCompatActivity() {
     private fun optionAns(ans: String) {
         when (i) {
             5 -> if (ans == "Yes") i += 2 else i++
-            8 -> {
+            7 -> {
                 when (ans) {
                     "Green Egg" -> userDragon.type = Dragon.Type.BEHEMOTH
                     "Blue Egg" -> userDragon.type = Dragon.Type.FAE
                     "Purple Egg" -> userDragon.type = Dragon.Type.WYRM
                 }
                 i++
+                Log.v(TAG, userDragon.type.toString())
             }
-            10 -> if (ans == "Yes") i++ else i -= 3
+            9 -> if (ans == "Yes") i++ else i -= 3
 //            12 -> {
 //                if (ans == "Hold the egg close to the fire.") ; else if (ans == "Rub the egg.") ; else if (ans == "Do nothing with the egg.");
 //                i++
@@ -136,23 +137,24 @@ class GameActivity : AppCompatActivity() {
 
     private fun replaceString(str: String): String {
         if(str.contains("key:egg msg", ignoreCase = true)){
-            Log.v(TAG, "key:egg msg")
-            str.replace("key:egg msg", userDragon.eggMessage())
+            val newValue = userDragon.eggMessage(userDragon)
+            str.replace("key:egg msg", newValue)
+            Log.v(TAG, str)
         }
         else if(str.contains("key:type msg", ignoreCase = true)){
-            Log.v(TAG, "key:type msg")
             str.replace("key:type msg", userDragon.type.toString())
+            Log.v(TAG, str)
         }
         else if(str.contains("key:gender msg", ignoreCase = true)){
-            Log.v(TAG, "key:gender msg")
             userDragon.genderMessage()?.let { str.replace("key:gender msg", it) }
+            Log.v(TAG, str)
         }
         else if(str.contains("key: origin msg", ignoreCase = true)){
-            Log.v(TAG, "key: origin msg")
             str.replace("key: origin msg", userDragon.originMessage(userDragon))
+            Log.v(TAG, str)
         }
 
-        return ""
+        return str
     }
 
 }

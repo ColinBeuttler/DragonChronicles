@@ -12,9 +12,9 @@ class Dragon(var name: String?, var type: Type?, var gender: Gender?) {
     }
 
 
-    fun eggMessage(): String {
+    fun eggMessage(dragon: Dragon): String {
         var message: String? = null
-        message = when (type) {
+        message = when (dragon.type) {
             Type.FAE -> {
                 "...within the egg, you sense both calm and ferocity. A brilliant interior with veiled edges constantly moving like a swirling typhoon."
             }
