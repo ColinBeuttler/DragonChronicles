@@ -31,17 +31,6 @@ open class DialogFragment : Fragment() {
     }
 
 
-//    public fun buildBubble(dialog: Array<String>) {
-//        val options: Array<String> = dialog.copyOfRange(1, dialog.size);
-//        var optionAns: String
-//        val builder = AlertDialog.Builder()
-//        builder.setTitle(dialog[0])
-//        builder.setItems(options) { _, which -> optionAns = options[which] }
-//        builder.create().show()
-//        Log.v(TAG, options[0])
-//
-//    }
-
 
 //    private fun optionsAns(ans: String?) {
 //        Toast.makeText(getContext(), ans, Toast.LENGTH_LONG).show();

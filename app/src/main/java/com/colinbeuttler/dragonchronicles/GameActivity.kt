@@ -102,9 +102,30 @@ class GameActivity : AppCompatActivity() {
         val options: Array<String> = dialogLines[i].copyOfRange(1, dialogLines[i].size);
         var optionAns: String
         builder.setTitle(ques)
-        builder.setItems(options) { _, which -> optionAns = options[which] }
+        builder.setItems(options) { _, which -> optionAns(options[which]) }
         builder.create().show()
 
+
+    }
+
+    private fun optionAns(ans: String) {
+        when (i) {
+            5 -> if (ans == "Yes") i += 2 else i++
+            8 -> {
+                when (ans) {
+                    "Green Egg" -> userDragon.type = Dragon.Type.BEHEMOTH
+                    "Blue Egg" -> userDragon.type = Dragon.Type.FAE
+                    "Purple Egg" -> userDragon.type = Dragon.Type.WYRM
+                }
+                i++
+            }
+            10 -> if (ans == "Yes") i++ else i -= 2
+//            12 -> {
+//                if (ans == "Hold the egg close to the fire.") ; else if (ans == "Rub the egg.") ; else if (ans == "Do nothing with the egg.");
+//                i++
+//            }
+            else -> i++
+        }
     }
 
 
