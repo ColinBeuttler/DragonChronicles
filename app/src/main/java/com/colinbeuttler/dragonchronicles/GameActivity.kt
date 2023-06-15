@@ -90,7 +90,7 @@ class GameActivity : AppCompatActivity() {
             loadDialogBubble()
 
         } else {
-            if(dialogLines[i][0].contains("key:", ignoreCase = true)) replaceString(dialogLines[i][0])
+            if(dialogLines[i][0].contains("key:", ignoreCase = true)) dialogLines[i][0] = replaceString(dialogLines[i][0])
             binding.textViewDialogue.text = dialogLines[i][0]
             i++
         }
@@ -136,25 +136,26 @@ class GameActivity : AppCompatActivity() {
 
 
     private fun replaceString(str: String): String {
+        var nStr = ""
         if(str.contains("key:egg msg", ignoreCase = true)){
             val newValue = userDragon.eggMessage(userDragon)
-            str.replace("key:egg msg", newValue)
+            nStr = str.replace("key:egg msg", newValue)
             Log.v(TAG, str)
         }
         else if(str.contains("key:type msg", ignoreCase = true)){
-            str.replace("key:type msg", userDragon.type.toString())
+            nStr =  str.replace("key:type msg", userDragon.type.toString())
             Log.v(TAG, str)
         }
         else if(str.contains("key:gender msg", ignoreCase = true)){
-            userDragon.genderMessage()?.let { str.replace("key:gender msg", it) }
+            nStr = userDragon.genderMessage()?.let { str.replace("key:gender msg", it) }.toString()
             Log.v(TAG, str)
         }
         else if(str.contains("key: origin msg", ignoreCase = true)){
-            str.replace("key: origin msg", userDragon.originMessage(userDragon))
+            nStr = str.replace("key: origin msg", userDragon.originMessage(userDragon))
             Log.v(TAG, str)
         }
 
-        return str
+        return nStr
     }
 
 }
