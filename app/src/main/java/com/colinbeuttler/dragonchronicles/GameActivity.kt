@@ -100,7 +100,6 @@ class GameActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         val ques = dialogLines[i][0].toString()
         val options: Array<String> = dialogLines[i].copyOfRange(1, dialogLines[i].size);
-        var optionAns: String
         builder.setTitle(ques)
         builder.setItems(options) { _, which -> optionAns(options[which]) }
         builder.create().show()
