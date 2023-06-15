@@ -125,6 +125,7 @@ class GameActivity : AppCompatActivity() {
 //            }
             else -> i++
         }
+        binding.textViewDialogue.text = dialogLines[i][0]
     }
 
 
