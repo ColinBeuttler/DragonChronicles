@@ -78,7 +78,7 @@ class Dragon(var name: String?, var type: Type?, var gender: Gender?) {
         @JvmStatic
         fun determineGender(): Gender {
             val gender = Math.random().roundToInt()
-            return if (gender < 1) {
+            return if (gender < 0) {
                 Gender.FEMALE
             } else {
                 Gender.MALE
